@@ -2483,7 +2483,7 @@ __END__
   Parameters are as follows:<br>
   <ul>
     <li>type<br>
-      Is optional and one of <i>text</i>, <i>audio</i>, <i>light</i> or <i>screen</i>. If ommitted, it defaults to <i>text</i>.<br>
+      Is optional and one of <i>text</i>, <i>audio</i>, <i>light</i> or <i>screen</i> (or one of the subtypes to <i>text</i> - <i>mail</i> and <i>push</i>). If ommitted, it defaults to <i>text</i>.<br>
       You may provide more than one type by providing a comma-seperated list.
     </li>
     <li>@device or e-mail address<br>
