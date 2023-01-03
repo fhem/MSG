@@ -31,7 +31,7 @@ use utf8;
 # initialize ##################################################################
 sub MSG_Initialize($$) {
     my %hash = (
-        Fn => "CommandMsg",
+        Fn  => "CommandMsg",
         Hlp =>
 "[<type>] [<\@device>|<e-mail address>] [<priority>] [|<title>|] <message-text>",
     );
@@ -42,6 +42,7 @@ sub MSG_Initialize($$) {
 
 # regular Fn ##################################################################
 sub CommandMsg($$;$$);
+
 sub CommandMsg($$;$$) {
     my ( $cl, $msg, $testMode ) = @_;
     my $return = "";
@@ -112,7 +113,7 @@ sub CommandMsg($$;$$) {
     ### extract message details
     ###
 
-    my ( $msgA, $params ) = parseParams($msg, "[^\\S\\n]", " ");
+    my ( $msgA, $params ) = parseParams( $msg, "[^\\S\\n]", " " );
 
     # only use output from parseParams when
     # parameters where found
@@ -638,8 +639,7 @@ m/^@?([A-Za-z0-9._]+):([A-Za-z0-9._\-\/@+]*):?([A-Za-z0-9._\-\/@+]*)$/
                                                         ReadingsVal(
                                                             $gatewayDev,
                                                             "presence",
-                                                            "present"
-                                                          ) eq $_
+                                                            "present" ) eq $_
                                                     } @unavailabilityIndicators
                                                 )
 
@@ -648,8 +648,7 @@ m/^@?([A-Za-z0-9._]+):([A-Za-z0-9._\-\/@+]*):?([A-Za-z0-9._\-\/@+]*)$/
                                                         ReadingsVal(
                                                             $gatewayDev,
                                                             "state",
-                                                            "present"
-                                                          ) eq $_
+                                                            "present" ) eq $_
                                                     } @unavailabilityIndicators
                                                 )
 
@@ -1636,9 +1635,9 @@ m/^(absent|disappeared|unauthorized|disconnected|unreachable)$/i
                             $loopTitleShrt =
                               substr( $loopTitleShrt, 0, 37 ) . "..."
                               if ( length($loopTitleShrt) > 40 );
-                            $cmd =~ s/%TITLESHRT%/$loopTitleShrt/gi;
+                            $cmd           =~ s/%TITLESHRT%/$loopTitleShrt/gi;
                             $loopTitleShrt =~ s/ /_/;
-                            $cmd =~ s/%TITLESHRT2%/$loopTitleShrt/gi;
+                            $cmd           =~ s/%TITLESHRT2%/$loopTitleShrt/gi;
                             $loopTitleShrt =~ s/^([\s\t ]*\w+).*/$1/g;
                             $loopTitleShrt =
                               substr( $loopTitleShrt, 0, 17 ) . "..."
@@ -1955,19 +1954,24 @@ m/^(absent|disappeared|unauthorized|disconnected|unreachable)$/i
                                         Log3 $logDevice, 5,
                                           "msg $device: "
                                           . "$type[$i] route command (Perl): $cmd";
+
                                         #eval $cmd;
-                                        my $ret = AnalyzePerlCommand(undef, $cmd);
-                                        unless ( !$ret || $ret =~ m/^[\s\t\n ]*$/ )
+                                        my $ret =
+                                          AnalyzePerlCommand( undef, $cmd );
+                                        unless ( !$ret
+                                            || $ret =~ m/^[\s\t\n ]*$/ )
                                         {
                                             $error = 1;
-                                            $loopReturn3 .= "$gatewayDev: $ret\n";
+                                            $loopReturn3 .=
+                                              "$gatewayDev: $ret\n";
                                         }
                                     }
                                     else {
                                         Log3 $logDevice, 5,
                                           "msg $device: "
                                           . "$type[$i] route command (fhem): $cmd";
-                                        my $ret = AnalyzeCommandChain(undef,$cmd);
+                                        my $ret =
+                                          AnalyzeCommandChain( undef, $cmd );
                                         unless ( !$ret
                                             || $ret =~ m/^[\s\t\n ]*$/ )
                                         {

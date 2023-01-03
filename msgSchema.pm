@@ -201,6 +201,12 @@ my $db = {
             'Low'    => 'set %DEVICE% message %MSG%',
         },
 
+        'Matrix' => {
+            'Normal' => 'set %DEVICE% msg %MSG%',
+            'High'   => 'set %DEVICE% msg %MSG%',
+            'Low'    => 'set %DEVICE% msg %MSG%',
+        },
+
         'Pushover' => {
             'Normal' =>
 'set %DEVICE% %Pushover_MTYPE% title=\'%TITLE%\' device=\'%RECIPIENT%:%TERMINAL%\' priority=%PRIORITY% url_title="%URLTITLE%" message=\'%MSG%\'',
@@ -342,7 +348,7 @@ my $db = {
             },
         },
 
-        'LGTV_WEBOS' => {
+        'LGTV_WebOS' => {
             'Normal' => 'set %DEVICE% screenMsg %MSG%',
             'High'   => 'set %DEVICE% screenMsg %MSG%',
             'Low'    => 'set %DEVICE% screenMsg %MSG%',
