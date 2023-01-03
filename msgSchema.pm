@@ -201,12 +201,6 @@ my $db = {
             'Low'    => 'set %DEVICE% message %MSG%',
         },
 
-        'Matrix' => {
-            'Normal' => 'set %DEVICE% msg %MSG%',
-            'High'   => 'set %DEVICE% msg %MSG%',
-            'Low'    => 'set %DEVICE% msg %MSG%',
-        },
-
         'Pushover' => {
             'Normal' =>
 'set %DEVICE% %Pushover_MTYPE% title=\'%TITLE%\' device=\'%RECIPIENT%:%TERMINAL%\' priority=%PRIORITY% url_title="%URLTITLE%" message=\'%MSG%\'',
@@ -308,6 +302,26 @@ my $db = {
                 'Low' => {
                     'RECIPIENT'         => '',
                     'TelegramBot_MTYPE' => 'message',
+                },
+            },
+        },
+
+        'Signalbot' => {
+            'Normal' => 'set %DEVICE% %Signalbot_MTYPE% %RECIPIENT% %MSG%',
+            'High'   => 'set %DEVICE% %Signalbot_MTYPE% %RECIPIENT% %MSG%',
+            'Low'    => 'set %DEVICE% %Signalbot_MTYPE% %RECIPIENT% %MSG%',
+            'defaultValues' => {
+                'Normal' => {
+                    'RECIPIENT'       => '',
+                    'Signalbot_MTYPE' => 'send',
+                },
+                'High' => {
+                    'RECIPIENT'       => '',
+                    'Signalbot_MTYPE' => 'send',
+                },
+                'Low' => {
+                    'RECIPIENT'       => '',
+                    'Signalbot_MTYPE' => 'send',
                 },
             },
         },
@@ -475,6 +489,8 @@ sub get {
 }
 
 1;
+
+__END__
 
 =pod
 =encoding utf8
