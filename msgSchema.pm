@@ -201,6 +201,12 @@ my $db = {
             'Low'    => 'set %DEVICE% message %MSG%',
         },
 
+        'Matrix' => {
+            'Normal' => 'set %DEVICE% msg %MSG%',
+            'High'   => 'set %DEVICE% msg %MSG%',
+            'Low'    => 'set %DEVICE% msg %MSG%',
+        },
+
         'Pushover' => {
             'Normal' =>
 'set %DEVICE% %Pushover_MTYPE% title=\'%TITLE%\' device=\'%RECIPIENT%:%TERMINAL%\' priority=%PRIORITY% url_title="%URLTITLE%" message=\'%MSG%\'',
@@ -306,6 +312,26 @@ my $db = {
             },
         },
 
+        'Signalbot' => {
+            'Normal' => 'set %DEVICE% %Signalbot_MTYPE% %RECIPIENT% %MSG%',
+            'High'   => 'set %DEVICE% %Signalbot_MTYPE% %RECIPIENT% %MSG%',
+            'Low'    => 'set %DEVICE% %Signalbot_MTYPE% %RECIPIENT% %MSG%',
+            'defaultValues' => {
+                'Normal' => {
+                    'RECIPIENT'       => '',
+                    'Signalbot_MTYPE' => 'send',
+                },
+                'High' => {
+                    'RECIPIENT'       => '',
+                    'Signalbot_MTYPE' => 'send',
+                },
+                'Low' => {
+                    'RECIPIENT'       => '',
+                    'Signalbot_MTYPE' => 'send',
+                },
+            },
+        },
+
         'yowsup' => {
             'Normal' => 'set %DEVICE% send %RECIPIENT% %MSG%',
             'High'   => 'set %DEVICE% send %RECIPIENT% %MSG%',
@@ -342,7 +368,7 @@ my $db = {
             },
         },
 
-        'LGTV_WEBOS' => {
+        'LGTV_WebOS' => {
             'Normal' => 'set %DEVICE% screenMsg %MSG%',
             'High'   => 'set %DEVICE% screenMsg %MSG%',
             'Low'    => 'set %DEVICE% screenMsg %MSG%',
@@ -469,6 +495,8 @@ sub get {
 }
 
 1;
+
+__END__
 
 =pod
 =encoding utf8
